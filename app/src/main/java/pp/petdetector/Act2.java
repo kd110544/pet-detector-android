@@ -17,7 +17,7 @@ public class Act2 extends AppCompatActivity {
         txtName.setText("貓的品種是:" +MultiBoxTracker.callName());
 
         TextView txtAttribute = findViewById(R.id.txtAttribute);
-        txtAttribute.setText("準確率為:"+String.format("%.3f",MultiBoxTracker.callType()));
+        txtAttribute.setText("辨識準確率是:"+String.format("%.3f",MultiBoxTracker.callType()));
 
     }
 }
