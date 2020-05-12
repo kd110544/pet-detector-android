@@ -16,34 +16,22 @@
 <FrameLayout xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:layout_weight="1"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <FrameLayout
             android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#000"
             tools:context="pp.petdetector.CameraActivity" />
 
-    </FrameLayout>
-
-    <FrameLayout
+    <Button
+        android:id="@+id/btnName"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="儲存"
-            android:id="@+id/btnName"
-            android:textColor="#000000"
-            android:textSize="28dp"/>
-
-    </FrameLayout>
-
+        android:layout_height="70dp"
+        android:layout_gravity="bottom"
+        android:text="儲存辨識結果"
+        android:textColor="#000000"
+        android:textSize="28dp" />
 </FrameLayout>
 
