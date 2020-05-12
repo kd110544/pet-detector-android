@@ -216,7 +216,7 @@ public class MultiBoxTracker {
             Log.d("debug資訊","劃出邊框3");
 
             貓的品種 = recognition.title;
-            相似程度 = (double)recognition.detectionConfidence;
+            準確程度 = (double)recognition.detectionConfidence;
             //System.out.println("print"+貓的品種);
             //System.out.println("print"+相似程度);
 
