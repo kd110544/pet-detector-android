@@ -11,7 +11,7 @@
         android:padding="15dp"
         android:layout_marginTop="100dp"
         android:textColor="#000000"
-        android:id="@+id/txtName"/>
+        android:id="@+id/txtCatBreed"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,6 +19,14 @@
         android:textSize="35dp"
         android:padding="15dp"
         android:textColor="#000000"
-        android:id="@+id/txtAttribute"/>
+        android:id="@+id/txtAccuracy"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="None"
+        android:textSize="35dp"
+        android:padding="15dp"
+        android:textColor="#000000"
+        android:id="@+id/txtCatColor"/>
 
 </LinearLayout>

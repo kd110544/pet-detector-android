@@ -47,15 +47,17 @@ public class MultiBoxTracker {
 
 
 
-    public static String  貓的品種;
-    public static Double  準確程度;
+    public static String CatBreed;
+    public static Double Accuracy;
+    public static String CatColor;
+    public static String BBB;
+    public static String CCC;
 
-    public static String callName(){
-        return 貓的品種;
+    public static String callBreed(){
+        return CatBreed;
     };
-    public static Double callType(){
-        return 準確程度;
-    }
+    public static Double callAccuracy(){ return Accuracy; };
+    public static String callCatColor(){ return CatColor; };
 
     private final Logger logger = new Logger();
 
@@ -215,8 +217,11 @@ public class MultiBoxTracker {
             borderedText.drawText(canvas, trackedPos.left + cornerSize, trackedPos.bottom, labelString);
             Log.d("debug資訊","劃出邊框3");
 
-            貓的品種 = recognition.title;
-            準確程度 = (double)recognition.detectionConfidence;
+            CatBreed = recognition.title;
+            Accuracy = (double)recognition.detectionConfidence;
+            CatColor = String.valueOf(recognition.color);
+            //What is color???
+
             //System.out.println("print"+貓的品種);
             //System.out.println("print"+相似程度);
 

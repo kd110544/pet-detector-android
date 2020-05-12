@@ -13,11 +13,15 @@ public class Act2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act2);
 
-        TextView txtName = findViewById(R.id.txtName);
-        txtName.setText("貓的品種是:" +MultiBoxTracker.callName());
+        TextView txtName = findViewById(R.id.txtCatBreed);
+        txtName.setText("貓的品種是:" +MultiBoxTracker.callBreed());
 
-        TextView txtAttribute = findViewById(R.id.txtAttribute);
-        txtAttribute.setText("辨識準確程度:"+String.format("%.2f",MultiBoxTracker.callType()));
+        TextView txtAttribute = findViewById(R.id.txtAccuracy);
+        txtAttribute.setText("辨識準確度:"+String.format("%.3f",MultiBoxTracker.callAccuracy()));
+
+        TextView txtCatColor = findViewById(R.id.txtCatColor);
+        txtCatColor.setText("貓的顏色是:"+MultiBoxTracker.callCatColor());
+
 
     }
 }
