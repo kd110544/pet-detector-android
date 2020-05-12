@@ -25,6 +25,7 @@ import android.graphics.Paint.Join;
 import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Pair;
 import android.util.TypedValue;
 import android.widget.Toast;
@@ -43,6 +44,19 @@ import java.util.Queue;
  * objects to new detections.
  */
 public class MultiBoxTracker {
+
+
+
+    public static String  貓的品種;
+    public static Double  相似程度;
+
+    public static String callName(){
+        return 貓的品種;
+    };
+    public static Double callType(){
+        return 相似程度;
+    }
+
     private final Logger logger = new Logger();
 
     private static final float TEXT_SIZE_DIP = 18;
@@ -72,6 +86,8 @@ public class MultiBoxTracker {
     private ObjectTracker objectTracker;
 
     private final List<Pair<Float, RectF>> screenRects = new LinkedList<Pair<Float, RectF>>();
+
+
 
     private static class TrackedRecognition {
         ObjectTracker.TrackedObject trackedObject;
@@ -134,6 +150,7 @@ public class MultiBoxTracker {
             canvas.drawRect(rect, boxPaint);
             canvas.drawText("" + detection.first, rect.left, rect.top, textPaint);
             borderedText.drawText(canvas, rect.centerX(), rect.centerY(), "" + detection.first);
+            Log.i("資訊","劃出邊框1");
         }
 
         if (objectTracker == null) {
@@ -149,6 +166,7 @@ public class MultiBoxTracker {
             if (getFrameToCanvasMatrix().mapRect(trackedPos)) {
                 final String labelString = String.format("%.2f", trackedObject.getCurrentCorrelation());
                 borderedText.drawText(canvas, trackedPos.right, trackedPos.bottom, labelString);
+                Log.i("資訊","劃出邊框2");
             }
         }
 
@@ -191,7 +209,17 @@ public class MultiBoxTracker {
                     !TextUtils.isEmpty(recognition.title)
                             ? String.format("%s %.2f", recognition.title, recognition.detectionConfidence)
                             : String.format("%.2f", recognition.detectionConfidence);
+                    Log.i("資訊","這隻貓的品種是:"+recognition.title);
+                    Log.i("資訊","相似程度是:"+recognition.detectionConfidence);
+
             borderedText.drawText(canvas, trackedPos.left + cornerSize, trackedPos.bottom, labelString);
+            Log.d("debug資訊","劃出邊框3");
+
+            貓的品種 = recognition.title;
+            相似程度 = (double)recognition.detectionConfidence;
+            //System.out.println("print"+貓的品種);
+            //System.out.println("print"+相似程度);
+
         }
     }
 

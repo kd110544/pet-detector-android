@@ -16,6 +16,7 @@
 
 package pp.petdetector;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
@@ -27,9 +28,13 @@ import android.graphics.Typeface;
 import android.media.ImageReader.OnImageAvailableListener;
 import android.os.SystemClock;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.util.Size;
 import android.util.TypedValue;
+import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import pp.petdetector.env.BorderedText;
 import pp.petdetector.env.ImageUtils;
@@ -86,13 +91,25 @@ public class MainActivity extends CameraActivity implements OnImageAvailableList
     private Snackbar initSnackbar;
 
     private boolean initialized = false;
+    private View.OnClickListener btnName_click = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(MainActivity.this, Act2.class);
+            startActivity(intent);
+        }
+    };
 
     @Override
     public void onPreviewSizeChosen(final Size size, final int rotation) {
+
+
         new Thread(this::init).start();
+
 
         FrameLayout container = findViewById(R.id.container);
         initSnackbar = Snackbar.make(container, "Initializing...", Snackbar.LENGTH_INDEFINITE);
+        Button btnName = findViewById(R.id.btnName);
+        btnName.setOnClickListener(btnName_click);
 
         final float textSizePx =
         TypedValue.applyDimension(
@@ -166,6 +183,7 @@ public class MainActivity extends CameraActivity implements OnImageAvailableList
 
                     borderedText.drawLines(canvas, 10, canvas.getHeight() - 10, lines);
                 });
+
     }
 
     OverlayView trackingOverlay;
@@ -206,8 +224,10 @@ public class MainActivity extends CameraActivity implements OnImageAvailableList
         }
         computingDetection = true;
         LOGGER.i("Preparing image " + currTimestamp + " for detection in bg thread.");
+        Log.i("資訊","一直讀取影像");
 
         rgbFrameBitmap.setPixels(getRgbBytes(), 0, previewWidth, 0, 0, previewWidth, previewHeight);
+        Log.i("資訊", "正在處理圖片");
 
         if (luminanceCopy == null) {
             luminanceCopy = new byte[originalLuminance.length];
