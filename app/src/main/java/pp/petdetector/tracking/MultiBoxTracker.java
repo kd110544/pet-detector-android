@@ -48,13 +48,13 @@ public class MultiBoxTracker {
 
 
     public static String  貓的品種;
-    public static Double  相似程度;
+    public static Double  準確程度;
 
     public static String callName(){
         return 貓的品種;
     };
     public static Double callType(){
-        return 相似程度;
+        return 準確程度;
     }
 
     private final Logger logger = new Logger();
